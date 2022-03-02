@@ -26,6 +26,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final formKey = GlobalKey<FormState>();
+  String? value = "";
+  TextEditingController _fistname = TextEditingController();
+  TextEditingController _lname = TextEditingController();
+  TextEditingController _add = TextEditingController();
+  TextEditingController _edu = TextEditingController();
+  TextEditingController _grade = TextEditingController();
+  TextEditingController _mobile = TextEditingController();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _id = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
+                      //controller: _fistname,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'First name',
@@ -60,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
+                      //controller: _lname,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Last name',
@@ -70,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
+                      //controller: _add,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Address',
@@ -80,6 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
+                      //controller: _edu,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Educational Background',
@@ -90,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
-                      obscureText: true,
+                      //controller: _grade,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Grade',
@@ -101,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
-                      obscureText: true,
+                      //controller: _mobile,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Mobile',
@@ -112,6 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
+                      //controller: _email,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
@@ -123,6 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
+                      //controller: _id,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Login ID',
@@ -152,6 +167,170 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
+                  Text(
+                    "โปรดเลือกโครงการที่ต้องการสมัคร",
+                    style: TextStyle(fontSize: 20, color: Colors.black),
+                  ),
+                  Container(
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: DropdownButton<String>(
+                            items: [
+                              DropdownMenuItem<String>(
+                                value: "1",
+                                child: Center(
+                                  child: Text("โครงการรับตรงสอบข้อเขียน"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value: "2",
+                                child: Center(
+                                  child: Text("โครงการโควตาพื้นที่"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value: "3",
+                                child: Center(
+                                  child: Text("โครงการ portfolio"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value: "4",
+                                child: Center(
+                                  child: Text("โครงการเรียนดี"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value: "5",
+                                child: Center(
+                                  child: Text("โครงการรับตรงใช้คะแนน GAT/PAT"),
+                                ),
+                              ),
+                            ],
+                            onChanged: (_value) => {
+                              print(_value.toString()),
+                            },
+                            hint: Text('โปรดเลือกโครงการที่ต้องการสมัคร'),
+                          ),
+                        ),
+                        Text('$value'),
+                        Text(
+                          "เลือกสาขาที่ต้องการสมัคร",
+                          style: TextStyle(fontSize: 20, color: Colors.black),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: DropdownButton<String>(
+                            items: [
+                              DropdownMenuItem<String>(
+                                value: "สาขาวิชาเทคโนโลยีสารสนเทศ (IT)",
+                                child: Center(
+                                  child: Text("สาขาวิชาเทคโนโลยีสารสนเทศ (IT)"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value:
+                                    "สาขาวิชาวิศวกรรมสารสนเทศและเครือข่าย (INE)",
+                                child: Center(
+                                  child: Text(
+                                      "สาขาวิชาวิศวกรรมสารสนเทศและเครือข่าย (INE)"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value:
+                                    "สาขาวิชาเทคโนโลยีสารสนเทศ (ITI) หลักสูตร 2 ปี",
+                                child: Center(
+                                  child: Text(
+                                      "สาขาวิชาเทคโนโลยีสารสนเทศ (ITI) หลักสูตร 2 ปี"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value:
+                                    "สาขาวิชาวิศวกรรมสารสนเทศและเครือข่าย (INET) หลักสูตร 2 ปี",
+                                child: Center(
+                                  child: Text(
+                                      "สาขาวิชาวิศวกรรมสารสนเทศและเครือข่าย (INET) หลักสูตร 2 ปี"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value:
+                                    "สาขาวิชาวิศวกรรมอุตสาหการและการจัดการ (IEM)",
+                                child: Center(
+                                  child: Text(
+                                      "สาขาวิชาวิศวกรรมอุตสาหการและการจัดการ (IEM)"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value:
+                                    "สาขาวิชาเทคโนโลยีเครื่องกลและกระบวนการผลิต(MM)",
+                                child: Center(
+                                  child: Text(
+                                      "สาขาวิชาเทคโนโลยีเครื่องกลและกระบวนการผลิต(MM)"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value:
+                                    "สาขาวิชาการจัดการอุตสาหกรรม (IMT) หลักสูตร 2 ปี",
+                                child: Center(
+                                  child: Text(
+                                      "สาขาวิชาการจัดการอุตสาหกรรม (IMT) หลักสูตร 2 ปี"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value:
+                                    "สาขาวิชาเทคโนโลยีเครื่องกลและกระบวนการผลิต(MMT) หลักสูตร 2 ปี",
+                                child: Center(
+                                  child: Text(
+                                      "สาขาวิชาเทคโนโลยีเครื่องกลและกระบวนการผลิต(MMT) หลักสูตร 2 ปี"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value: "สาขาวิชาวิศวกรรมเกษตรและอาหาร (AFE)",
+                                child: Center(
+                                  child: Text(
+                                      "สาขาวิชาวิศวกรรมเกษตรและอาหาร (AFE)"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value:
+                                    "สาขาวิชาวิศวกรรมเกษตรและอาหาร (AFET) หลักสูตร 2 ปี",
+                                child: Center(
+                                  child: Text(
+                                      "สาขาวิชาวิศวกรรมเกษตรและอาหาร (AFET) หลักสูตร 2 ปี"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value:
+                                    "สาขาวิชาคอมพิวเตอร์ช่วยออกแบบและบริหารงานก่อสร้าง (CA)",
+                                child: Center(
+                                  child: Text(
+                                      "สาขาวิชาคอมพิวเตอร์ช่วยออกแบบและบริหารงานก่อสร้าง (CA)"),
+                                ),
+                              ),
+                              DropdownMenuItem<String>(
+                                value:
+                                    "สาขาวิชาคอมพิวเตอร์ช่วยออกแบบและบริหารงานก่อสร้าง (CDM) หลักสูตร 2 ปี",
+                                child: Center(
+                                  child: Text(
+                                      "สาขาวิชาคอมพิวเตอร์ช่วยออกแบบและบริหารงานก่อสร้าง (CDM) หลักสูตร 2 ปี"),
+                                ),
+                              ),
+                            ],
+                            onChanged: (_value) => {
+                              print(_value.toString()),
+                              setState(() {
+                                value = _value;
+                              }),
+                            },
+                            hint: Text('โปรดเลือดสาขาที่ต้องการสมัคร'),
+                          ),
+                        ),
+                        Text('$value'),
+                      ],
+                    ),
+                  ),
                   Container(
                     height: 50.0,
                     margin: EdgeInsets.all(10),
@@ -159,7 +338,16 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => screenone()),
+                          MaterialPageRoute(
+                              builder: (context) => screenone(
+                                  firstname: _fistname.text,
+                                  lastname: _lname.text,
+                                  address: _add.text,
+                                  education: _edu.text,
+                                  grade: _grade.text,
+                                  moblie: _mobile.text,
+                                  email: _email.text,
+                                  id: _id.text)),
                         );
                       },
                       child: Ink(
